@@ -1,2 +1,1 @@
 # IQ-Challenge
-# IQChallenge

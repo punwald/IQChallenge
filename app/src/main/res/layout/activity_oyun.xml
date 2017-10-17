@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,16 +7,21 @@
     android:background="@color/bg"
     tools:context="com.punwald.iqchallenge.Oyun">
 
-    <RelativeLayout
-        android:id="@+id/layout"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="5">
+            android:weightSum="5"
+            android:layout_marginTop="8dp">
 
             <Button
                 android:id="@+id/geri"
@@ -51,7 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/linearLayout"
             android:orientation="vertical"
-            android:weightSum="6">
+            android:weightSum="6"
+            android:layout_marginTop="5dp">
 
             <ImageView
                 android:id="@+id/imageview"
@@ -113,7 +119,7 @@
                 android:id="@+id/reklam"
                 android:layout_width="45dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="-5dp"
+                android:layout_marginTop="10dp"
                 android:padding="0dp"
                 android:text="+1" />
         </LinearLayout>
@@ -122,8 +128,27 @@
             android:id="@+id/reklamLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/layout3"></RelativeLayout>
+            android:layout_below="@+id/layout3"
+            android:gravity="bottom">
+
+
+
+
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
-</ScrollView>
+    </ScrollView>
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-1592029610374280/2676302567">
+    </com.google.android.gms.ads.AdView>
+
+</RelativeLayout>

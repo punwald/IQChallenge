@@ -13,6 +13,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 public class Ayarlar extends AppCompatActivity {
 
     Button iletisimB;
@@ -24,6 +28,11 @@ public class Ayarlar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ayarlar);
         Intent intent=getIntent();
+         /*Reklam*/
+        MobileAds.initialize(this, "ca-app-pub-1592029610374280~2237318862");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         sesB= (SeekBar) findViewById(R.id.ses);
         iletisimB= (Button) findViewById(R.id.iletisim);

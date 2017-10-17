@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -17,7 +18,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Oyun extends Activity implements View.OnClickListener{
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+
+public class Oyun extends Activity implements View.OnClickListener, RewardedVideoAdListener {
     /*Animasyon*/
     Animation gecisAnimation,yanlisCevapAnimation;
 
@@ -30,11 +38,12 @@ public class Oyun extends Activity implements View.OnClickListener{
     /*View Erişimler*/
     RelativeLayout relativeLayout;
     ImageView imageView;
-    Button cevapB,tipB,ileriB,geriB;
+    Button cevapB,tipB,ileriB,geriB,reklam;
     EditText cvpGirdi;
     String cevapString;
     TextView bolumText,ipucuText;
     Typeface blow;
+    RewardedVideoAd mAd;
     /*View Erişimler Son*/
 
     int[] sorular =new int[6];
@@ -67,6 +76,15 @@ public class Oyun extends Activity implements View.OnClickListener{
         setContentView(R.layout.activity_oyun);
         Intent i=getIntent();
         relativeLayout= (RelativeLayout) findViewById(R.id.layout);
+        /*Reklam*/
+        MobileAds.initialize(this, "ca-app-pub-1592029610374280~2237318862");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        /*Video Reklam*/
+        mAd = MobileAds.getRewardedVideoAdInstance(this);
+        mAd.setRewardedVideoAdListener(this);
+        loadRewardedVideoAd();
 
         /*Animasyon*/
         gecisAnimation = AnimationUtils.loadAnimation(this,R.anim.sorugecisanim);
@@ -81,6 +99,7 @@ public class Oyun extends Activity implements View.OnClickListener{
         geriB= (Button) findViewById(R.id.geri);
         bolumText= (TextView) findViewById(R.id.bolumText);
         ipucuText= (TextView) findViewById(R.id.ipucuText);
+        reklam= (Button) findViewById(R.id.reklam);
 
         blow=Typeface.createFromAsset(getAssets(),"fonts/blowbrush.otf");
         bolumText.setTypeface(blow);
@@ -115,6 +134,7 @@ public class Oyun extends Activity implements View.OnClickListener{
         tipB.setOnClickListener(this);
         ileriB.setOnClickListener(this);
         geriB.setOnClickListener(this);
+        reklam.setOnClickListener(this);
         if (ensonlvl>0){
             suan=ensonlvl;
         }
@@ -198,6 +218,16 @@ public class Oyun extends Activity implements View.OnClickListener{
                 tipB.setText(tipHakki+"");
             }
         }
+        else if(v.getId()==reklam.getId()){
+            if(mAd.isLoaded()) {
+                geriSayim();
+                mAd.show();
+                loadRewardedVideoAd();
+            }else{
+                Toast.makeText(this,"Hata Oluştu!",Toast.LENGTH_SHORT).show();
+                loadRewardedVideoAd();
+            }
+        }
         /*SharedPreferences düzenleme*/
         editor.putInt("suanLvl",suan);
         editor.putInt("ipucuHakki",tipHakki);
@@ -205,5 +235,56 @@ public class Oyun extends Activity implements View.OnClickListener{
         editor.commit();
         /*SharedPreferences düzenleme son*/
 
+    }
+    private void loadRewardedVideoAd() {
+        mAd.loadAd("ca-app-pub-1592029610374280/3265483599",new AdRequest.Builder().build());
+    }
+
+    @Override
+    public void onRewardedVideoAdLeftApplication() {
+    }
+
+    @Override
+    public void onRewardedVideoAdClosed() {
+        Toast.makeText(this, "İpucu Alamadınız!", Toast.LENGTH_SHORT).show();
+        loadRewardedVideoAd();
+    }
+
+    @Override
+    public void onRewarded(RewardItem reward) {
+        Toast.makeText(this,"İpucu Kazandınız!",Toast.LENGTH_SHORT).show();
+        tipHakki++;
+        tipB.setText(tipHakki + "");
+    }
+
+    @Override
+    public void onRewardedVideoAdFailedToLoad(int errorCode) {
+    }
+
+    @Override
+    public void onRewardedVideoAdLoaded() {
+    }
+
+    @Override
+    public void onRewardedVideoAdOpened() {
+    }
+
+    @Override
+    public void onRewardedVideoStarted() {
+    }
+
+    public void geriSayim() {
+        new CountDownTimer(180000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                // Kalan süreyi saniye cinsine çevirip ekran alanına yazıyoruz.
+                reklam.setText(""+(millisUntilFinished/1000));
+            }
+
+            public void onFinish() {
+                // Süre tamamlandığını bildiriyoruz.
+                reklam.setText("+1");
+                loadRewardedVideoAd();
+            }
+        }.start();
     }
 }

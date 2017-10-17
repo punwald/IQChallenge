@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="97c83fb0954f6eb9a027fd94462493bbdd292178">
+        sha1="351c813cd3aa92898dec5b1db46f2b2af7e4c27d">
         <dex dex="/home/efdal/disk/IQ-Challenge-master/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_4c660c6feadf0370469df8fbf829c618ed1a4935/classes.dex" />
     </item>
     <item
@@ -30,12 +30,48 @@
     </item>
     <item
         is-multidex="false"
+        jar="/home/efdal/.android/build-cache/bad2d8c23a6f35399bb865ee8679ada13f38d414/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f2cb88e7e28736d44e7e643deb80c9af1c3662c8">
+        <dex dex="/home/efdal/disk/IQ-Challenge-master/app/build/intermediates/pre-dexed/debug/classes_30430c6c3b477112d55f401ad3f5e2b04e15661f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/efdal/.android/build-cache/099f2868f4be171fd0acf3327d6b5fa253942dca/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="70ffe00aaf049893f59d1dad57bd82992faa38ef">
+        <dex dex="/home/efdal/disk/IQ-Challenge-master/app/build/intermediates/pre-dexed/debug/classes_f7aee83f2addaf51699fff02c1bd9ba7f809dcd9.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/efdal/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
         <dex dex="/home/efdal/disk/IQ-Challenge-master/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_226bf27a29953117c00f6fd9c284e3345ebfe032.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/efdal/.android/build-cache/e487469288180bc404eadc8eb180b0d3b59783f5/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2c73e2a93e00abd240e495c1e62217e53904a3f3">
+        <dex dex="/home/efdal/disk/IQ-Challenge-master/app/build/intermediates/pre-dexed/debug/classes_cc5b43ad8fd3282cfbc44a7915e43366597c1d47.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/efdal/.android/build-cache/2ad4c5263f008afaee544c4f818b8a6e1fb70a04/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e7f890dd2539b7f2582f450f0721e2dea6ae510c">
+        <dex dex="/home/efdal/disk/IQ-Challenge-master/app/build/intermediates/pre-dexed/debug/classes_7f23280a0fec2a815f035e660a3b0c2a5f0f7197.jar" />
     </item>
     <item
         is-multidex="false"
@@ -75,6 +111,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/home/efdal/.android/build-cache/4ba88f3f893cbf2f01342eba48b521661b7ce803/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="34c23b5894b4f24d566bfc33e0e25462c6436b78">
+        <dex dex="/home/efdal/disk/IQ-Challenge-master/app/build/intermediates/pre-dexed/debug/classes_346cda1babf1b63a6768aef1006a8c25093a2f9f.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/efdal/.android/build-cache/8b436a97b0424dbf22e73c474e0caf5f687d73ee/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -102,6 +147,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/home/efdal/.android/build-cache/4b05e7f448901628951f0ac86522501dc0a67e5c/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="416fb9ee2fd6e7af0bba04b01d90cb475b1e2074">
+        <dex dex="/home/efdal/disk/IQ-Challenge-master/app/build/intermediates/pre-dexed/debug/classes_8726d1d7c0556b5f61e1f0353285b40335f56950.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/efdal/.android/build-cache/414ca39f617c43e5aba7b7f42f1782a57fb95bb0/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -117,6 +171,24 @@
         revision="25.0.2"
         sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
         <dex dex="/home/efdal/disk/IQ-Challenge-master/app/build/intermediates/pre-dexed/debug/classes_a5a79017f1031934eb5eb6ef1054a33032f0f779.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/efdal/.android/build-cache/af21d9a1eaae11c76ae278a406c2aefb955d57c4/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2430e711762a749feb00b3d64858ca4768251b9d">
+        <dex dex="/home/efdal/disk/IQ-Challenge-master/app/build/intermediates/pre-dexed/debug/classes_e09d5da06209f8ac9d1bf0b335a6bf0449e78390.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/efdal/.android/build-cache/4e6a7d456ea7d3e4902361d81467a4aae1ccbc83/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="364364bf77b4a71afc5930fc3ae57b3f0eea637c">
+        <dex dex="/home/efdal/disk/IQ-Challenge-master/app/build/intermediates/pre-dexed/debug/classes_411cf00434caaf3b290a9924ea6a221395409b49.jar" />
     </item>
     <item
         is-multidex="false"
