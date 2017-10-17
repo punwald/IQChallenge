@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">IQ Challenge</string>
+    <string name="oyna">Oyna</string>
+    <string name="ayarlar">Ayarlar</string>
+    <string name="ileri">İleri</string>
+    <string name="geri">Geri</string>
+    <string name="cevapla">Cevapla</string>
+
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    tools:context="com.punwald.iqchallenge.Ayarlar">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IQ Challenge"
+        android:layout_marginTop="62dp"
+        android:id="@+id/ıq"
+        android:textSize="32dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/ipucu"/>
+
+    <TextView
+        android:id="@+id/sesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ses"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="52dp"
+        android:text="Ses Seviyesini Ayarla"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="24dp" />
+
+    <SeekBar
+        android:id="@+id/ses"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:max="100"
+        android:layout_above="@+id/iletisim"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="63dp" />
+
+    <Button
+        android:id="@+id/iletisim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="İletişim"
+        android:layout_above="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="73dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="56dp"
+        android:text="punwald.com"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="28dp" />
+
+
+</RelativeLayout>
