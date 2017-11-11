@@ -132,18 +132,6 @@
                 android:text="+1" />
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/reklamLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/layout3"
-            android:gravity="bottom">
-
-
-
-
-
-        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -158,5 +146,4 @@
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-1592029610374280/2676302567">
     </com.google.android.gms.ads.AdView>
-
 </RelativeLayout>

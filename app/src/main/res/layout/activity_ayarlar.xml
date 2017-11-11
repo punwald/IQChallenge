@@ -11,23 +11,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="IQ Challenge"
-        android:layout_marginTop="62dp"
         android:id="@+id/ıq"
         android:textSize="32dp"
+        android:textColor="@color/ipucu"
+        android:layout_marginTop="66dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/ipucu"/>
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/sesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ses"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="17dp"
         android:text="Ses Seviyesini Ayarla"
         android:textColor="@android:color/holo_orange_dark"
-        android:textSize="24dp" />
+        android:textSize="24dp"
+        android:layout_above="@+id/ses"
+        android:layout_centerHorizontal="true" />
 
     <SeekBar
         android:id="@+id/ses"
@@ -51,11 +51,11 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="21dp"
         android:text="punwald.com"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="28dp"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/adView"
         android:layout_centerHorizontal="true" />
 
     <com.google.android.gms.ads.AdView

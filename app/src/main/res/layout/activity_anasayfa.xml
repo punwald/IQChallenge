@@ -25,7 +25,7 @@
             android:id="@+id/oyna"
             android:layout_width="260dp"
             android:layout_height="80dp"
-            android:layout_marginLeft="55dp"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/btnoyna" />
 
         <Button
@@ -33,7 +33,7 @@
             android:layout_width="260dp"
             android:layout_height="80dp"
             android:layout_below="@+id/oyna"
-            android:layout_marginLeft="54dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:background="@drawable/btnayar" />
     </RelativeLayout>

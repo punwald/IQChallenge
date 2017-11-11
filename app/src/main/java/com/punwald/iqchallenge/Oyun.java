@@ -242,11 +242,11 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
 
     @Override
     public void onRewardedVideoAdLeftApplication() {
+        Toast.makeText(this, "Left!", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onRewardedVideoAdClosed() {
-        Toast.makeText(this, "İpucu Alamadınız!", Toast.LENGTH_SHORT).show();
         loadRewardedVideoAd();
     }
 
@@ -259,6 +259,7 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
 
     @Override
     public void onRewardedVideoAdFailedToLoad(int errorCode) {
+        loadRewardedVideoAd();
     }
 
     @Override

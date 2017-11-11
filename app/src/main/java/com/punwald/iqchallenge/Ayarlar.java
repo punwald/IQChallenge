@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.AudioManager;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +23,7 @@ public class Ayarlar extends AppCompatActivity {
     Button iletisimB;
     SeekBar sesB;
     AudioManager sesYöneticisi;
-    TextView sesText;
+    TextView sesText,punwaldText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,16 @@ public class Ayarlar extends AppCompatActivity {
         sesB= (SeekBar) findViewById(R.id.ses);
         iletisimB= (Button) findViewById(R.id.iletisim);
         sesText= (TextView) findViewById(R.id.sesText);
+        punwaldText= (TextView) findViewById(R.id.textView);
+        punwaldText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "http://www.punwald.com";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
 
         TextView ıq= (TextView) findViewById(R.id.ıq);
         Typeface tp=Typeface.createFromAsset(getAssets(),"fonts/blowbrush.otf");
@@ -45,13 +56,15 @@ public class Ayarlar extends AppCompatActivity {
         iletisimB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String[] alici={"punwald@gmail.com"};
                 Intent email=new Intent(Intent.ACTION_SEND);
-                email.setType("message/rfc822");
-                email.putExtra(Intent.EXTRA_EMAIL,"punwald@gmail.com");
+                email.setData(Uri.parse("mailto:"));
+                email.setType("text/plain");
+                email.putExtra(Intent.EXTRA_EMAIL,alici);
 
                 try {
                     startActivity(Intent.createChooser(email,"E-mail Uygulaması Seçiniz!"));
+                    finish();
                 }catch (ActivityNotFoundException e){
                     Toast.makeText(getApplicationContext(),"E-mail gönderecek uygulama bulunamadı!",Toast.LENGTH_LONG).show();
                 }
