@@ -1,72 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
-    tools:context="com.punwald.iqchallenge.Ayarlar">
+    tools:context="com.punwald.iqchallenge.Ayarlar"
+    android:orientation="vertical"
+    android:weightSum="20"
+    android:background="@color/bg">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="IQ Challenge"
-        android:id="@+id/ıq"
-        android:textSize="32dp"
-        android:textColor="@color/ipucu"
-        android:layout_marginTop="66dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_weight="10"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
 
-    <TextView
-        android:id="@+id/sesText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:text="Ses Seviyesini Ayarla"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textSize="24dp"
-        android:layout_above="@+id/ses"
-        android:layout_centerHorizontal="true" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/anaSayfa"
+            android:text="Anasayfa"
+            android:layout_marginLeft="20dp"/>
 
-    <SeekBar
-        android:id="@+id/ses"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
-        android:max="100"
-        android:layout_above="@+id/iletisim"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="63dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iletisim"
+            android:text="İletişim"
+            android:layout_marginLeft="160dp"/>
 
-    <Button
-        android:id="@+id/iletisim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="İletişim"
-        android:layout_above="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="73dp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="21dp"
-        android:text="punwald.com"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="28dp"
-        android:layout_above="@+id/adView"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="punwald.com"
+            android:layout_centerVertical="true"
+            android:textSize="42dp"
+            android:fontFamily="serif-monospace"
+            android:textColor="#ff4a1a"/>
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-1592029610374280/2676302567">
-    </com.google.android.gms.ads.AdView>
-
-</RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

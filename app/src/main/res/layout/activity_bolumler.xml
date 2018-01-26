@@ -15,7 +15,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bölüm 2"
+        android:text="Tablo Soruları"
         android:id="@+id/bolum2"
         android:layout_marginLeft="90dp"/>
     <Button
@@ -23,12 +23,6 @@
         android:layout_height="wrap_content"
         android:text="Bölüm 3"
         android:id="@+id/bolum3"
-        android:layout_marginLeft="180dp"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bölüm 4"
-        android:id="@+id/bolum4"
-        android:layout_marginLeft="270dp"/>
+        android:layout_marginLeft="240dp"/>
 
 </RelativeLayout>

@@ -8,7 +8,9 @@ import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -29,7 +31,6 @@ public class ikinciBolumOyun extends Activity implements View.OnClickListener, R
     /*Animasyon*/
     Animation gecisAnimation,yanlisCevapAnimation;
 
-    MediaPlayer dogruM,yanlısM,arkaPlanM;
 
     /*Shared Preferences*/
     SharedPreferences shared;
@@ -46,28 +47,25 @@ public class ikinciBolumOyun extends Activity implements View.OnClickListener, R
     RewardedVideoAd mAd;
     /*View Erişimler Son*/
 
-    int[] sorular =new int[6];
-    String[] cevap={"8","15","9","10","11","12"};
-    String[] ipucu={"1.cevap","2.cevap","3.cevap","4.cevap","5.cevap","6.cevap"};
+    int[] sorular =new int[7];
+    String[] cevap={"9","8","7","12","3","5","6"};
+    String[] ipucu={"1.cevap","2.cevap","3.cevap","4.cevap","5.cevap","6.cevap","7.cevap"};
 
     int suan=0,tipHakki=3,ensonlvl=0,kacinciTip=0;
 
     @Override
     protected void onPause() {
         super.onPause();
-        arkaPlanM.stop();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        arkaPlanM.stop();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        arkaPlanM.stop();
     }
 
     @Override
@@ -75,6 +73,7 @@ public class ikinciBolumOyun extends Activity implements View.OnClickListener, R
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ikinci_bolum_oyun);
         Intent i=getIntent();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         relativeLayout= (RelativeLayout) findViewById(R.id.layout);
         /*Reklam*/
         MobileAds.initialize(this, "ca-app-pub-1592029610374280~2237318862");
@@ -104,12 +103,13 @@ public class ikinciBolumOyun extends Activity implements View.OnClickListener, R
         blow=Typeface.createFromAsset(getAssets(),"fonts/blowbrush.otf");
         bolumText.setTypeface(blow);
         /*Sorular*/
-        sorular[0]=R.drawable.soru1;
-        sorular[1]=R.drawable.soru2;
-        sorular[2]=R.drawable.soru3;
-        sorular[3]=R.drawable.soru4;
-        sorular[4]=R.drawable.soru5;
-        sorular[5]=R.drawable.soru6;
+        sorular[0]=R.drawable.tablosoru1;
+        sorular[1]=R.drawable.tablosoru2;
+        sorular[2]=R.drawable.tablosoru3;
+        sorular[3]=R.drawable.tablosoru4;
+        sorular[4]=R.drawable.tablosoru5;
+        sorular[5]=R.drawable.tablosoru6;
+        sorular[6]=R.drawable.tablosoru7;
         /*Sorular Son*/
 
         /*SharedPreferences*/
@@ -123,13 +123,6 @@ public class ikinciBolumOyun extends Activity implements View.OnClickListener, R
 
         /*SharedPreferences Son*/
 
-        /*Müzik*/
-
-        dogruM=MediaPlayer.create(this,R.raw.snddogru);
-        yanlısM=MediaPlayer.create(this,R.raw.sndyanlis);
-        arkaPlanM=MediaPlayer.create(this,R.raw.backsound);
-        /*Müzik Son*/
-        arkaPlanM.start();
         cevapB.setOnClickListener(this);
         tipB.setOnClickListener(this);
         ileriB.setOnClickListener(this);
@@ -154,7 +147,7 @@ public class ikinciBolumOyun extends Activity implements View.OnClickListener, R
             if(!cvpGirdi.toString().isEmpty()){
                 if(cevapString.equals(cevap[suan])) {
                     if (suan<(sorular.length-1)){
-                        dogruM.start();
+
                         suan++;
                         if(!(ensonlvl>=suan)){
                             ensonlvl=suan;
@@ -176,7 +169,7 @@ public class ikinciBolumOyun extends Activity implements View.OnClickListener, R
                         startActivity(new Intent(this,Bolumler.class));
                     }
                 }else {
-                    yanlısM.start();
+
                     relativeLayout.startAnimation(yanlisCevapAnimation);
                     Toast.makeText(this,"Yanlış Cevap",Toast.LENGTH_SHORT).show();
                 }
@@ -289,5 +282,15 @@ public class ikinciBolumOyun extends Activity implements View.OnClickListener, R
             }
         }.start();
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK ) {
+
+            startActivity(new Intent(this,Ayarlar.class));
+        }
+        return true;
+    }
+
 }
 

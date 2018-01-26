@@ -85,7 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="2"
+                    android:text="Cevapla"
                     android:background="@color/butonbg"
                     android:textColor="@android:color/background_light"
                     android:fontFamily="monospace"

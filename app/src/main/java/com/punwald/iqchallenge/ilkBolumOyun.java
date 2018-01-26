@@ -8,7 +8,9 @@ import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -29,7 +31,6 @@ public class ilkBolumOyun extends Activity implements View.OnClickListener, Rewa
     /*Animasyon*/
     Animation gecisAnimation,yanlisCevapAnimation;
 
-    MediaPlayer dogruM,yanlısM,arkaPlanM;
 
     /*Shared Preferences*/
     SharedPreferences shared;
@@ -55,20 +56,17 @@ public class ilkBolumOyun extends Activity implements View.OnClickListener, Rewa
     @Override
     protected void onPause() {
         super.onPause();
-        arkaPlanM.stop();
     }
 
 
     @Override
     protected void onStop() {
         super.onStop();
-        arkaPlanM.stop();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        arkaPlanM.stop();
     }
 
     @Override
@@ -76,7 +74,7 @@ public class ilkBolumOyun extends Activity implements View.OnClickListener, Rewa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ilk_bolum_oyun);
         Intent i=getIntent();
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         /*Reklam*/
         MobileAds.initialize(this, "ca-app-pub-1592029610374280~2237318862");
         AdView mAdView = (AdView) findViewById(R.id.adView);
@@ -124,13 +122,6 @@ public class ilkBolumOyun extends Activity implements View.OnClickListener, Rewa
 
         /*SharedPreferences Son*/
 
-        /*Müzik*/
-
-        dogruM=MediaPlayer.create(this,R.raw.snddogru);
-        yanlısM=MediaPlayer.create(this,R.raw.sndyanlis);
-        arkaPlanM=MediaPlayer.create(this,R.raw.backsound);
-        /*Müzik Son*/
-        arkaPlanM.start();
         cevapB.setOnClickListener(this);
         tipB.setOnClickListener(this);
         ileriB.setOnClickListener(this);
@@ -155,7 +146,7 @@ public class ilkBolumOyun extends Activity implements View.OnClickListener, Rewa
             if(!cvpGirdi.toString().isEmpty()){
                 if(cevapString.equals(cevap[suan])) {
                     if (suan<(sorular.length-1)){
-                        dogruM.start();
+
                         suan++;
                         if(!(ensonlvl>=suan)){
                             ensonlvl=suan;
@@ -177,7 +168,6 @@ public class ilkBolumOyun extends Activity implements View.OnClickListener, Rewa
                         startActivity(new Intent(this,Bolumler.class));
                     }
                 }else {
-                    yanlısM.start();
                     relativeLayout.startAnimation(yanlisCevapAnimation);
                     Toast.makeText(this,"Yanlış Cevap",Toast.LENGTH_SHORT).show();
                 }
@@ -289,6 +279,16 @@ public class ilkBolumOyun extends Activity implements View.OnClickListener, Rewa
                 loadRewardedVideoAd();
             }
         }.start();
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK ) {
+
+            startActivity(new Intent(this,Ayarlar.class));
+        }
+        return true;
     }
 }
 
