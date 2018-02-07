@@ -47,8 +47,8 @@ public class UcuncuBolumOyun extends Activity implements View.OnClickListener, R
     RewardedVideoAd mAd;
     /*View Erişimler Son*/
 
-    int[] sorular =new int[6];
-    String[] cevap={"8","15","9","10","11","12"};
+    int[] sorular =new int[7];
+    String[] cevap={"3","11","1056","6","6","72","42"};
     String[] ipucu={"1.cevap","2.cevap","3.cevap","4.cevap","5.cevap","6.cevap"};
 
     int suan=0,tipHakki=3,ensonlvl=0,kacinciTip=0;
@@ -103,12 +103,13 @@ public class UcuncuBolumOyun extends Activity implements View.OnClickListener, R
         blow=Typeface.createFromAsset(getAssets(),"fonts/blowbrush.otf");
         bolumText.setTypeface(blow);
         /*Sorular*/
-        sorular[0]=R.drawable.soru1;
-        sorular[1]=R.drawable.soru2;
-        sorular[2]=R.drawable.soru3;
-        sorular[3]=R.drawable.soru4;
-        sorular[4]=R.drawable.soru5;
-        sorular[5]=R.drawable.soru6;
+        sorular[0]=R.drawable.sekil1;
+        sorular[1]=R.drawable.sekil2;
+        sorular[2]=R.drawable.sekil3;
+        sorular[3]=R.drawable.sekil4;
+        sorular[4]=R.drawable.sekil5;
+        sorular[5]=R.drawable.sekil6;
+        sorular[6]=R.drawable.sekil7;
         /*Sorular Son*/
 
         /*SharedPreferences*/

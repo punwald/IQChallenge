@@ -38,7 +38,7 @@
             android:name=".UcuncuBolumOyun"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".Ayarlar"
-            android:theme="@android:style/Theme.Dialog"></activity>
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"></activity>
     </application>
 
 </manifest>

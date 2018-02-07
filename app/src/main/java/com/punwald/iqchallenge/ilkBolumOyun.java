@@ -47,8 +47,8 @@ public class ilkBolumOyun extends Activity implements View.OnClickListener, Rewa
     RewardedVideoAd mAd;
     /*View Erişimler Son*/
 
-    int[] sorular =new int[6];
-    String[] cevap={"8","15","9","10","11","12"};
+    int[] sorular =new int[7];
+    String[] cevap={"265","636","111","1905","11935","3698","1194"};
     String[] ipucu={"1.cevap","2.cevap","3.cevap","4.cevap","5.cevap","6.cevap"};
 
     int suan=0,tipHakki,ensonlvl=0,kacinciTip=0;
@@ -103,12 +103,13 @@ public class ilkBolumOyun extends Activity implements View.OnClickListener, Rewa
         blow=Typeface.createFromAsset(getAssets(),"fonts/blowbrush.otf");
         bolumText.setTypeface(blow);
         /*Sorular*/
-        sorular[0]=R.drawable.soru1;
-        sorular[1]=R.drawable.soru2;
-        sorular[2]=R.drawable.soru3;
-        sorular[3]=R.drawable.soru4;
-        sorular[4]=R.drawable.soru5;
-        sorular[5]=R.drawable.soru6;
+        sorular[0]=R.drawable.sifre1;
+        sorular[1]=R.drawable.sifre2;
+        sorular[2]=R.drawable.sifre3;
+        sorular[3]=R.drawable.sifre4;
+        sorular[4]=R.drawable.sifre5;
+        sorular[5]=R.drawable.sifre6;
+        sorular[6]=R.drawable.sifre7;
         /*Sorular Son*/
 
         /*SharedPreferences*/
