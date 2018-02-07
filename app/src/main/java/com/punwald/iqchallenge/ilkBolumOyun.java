@@ -133,7 +133,7 @@ public class ilkBolumOyun extends Activity implements View.OnClickListener, Rewa
         }
 
         imageView.setBackgroundResource(sorular[suan]);
-        bolumText.setText("#"+(suan+1));
+        bolumText.setText("#1/"+(suan+1));
         tipB.setText(tipHakki+" ");
 
 
@@ -158,7 +158,7 @@ public class ilkBolumOyun extends Activity implements View.OnClickListener, Rewa
                         kacinciTip=suan;
                         imageView.startAnimation(gecisAnimation);
                         imageView.setBackgroundResource(sorular[suan]);
-                        bolumText.setText("#" + (suan+1));
+                        bolumText.setText("#1/" + (suan+1));
                         cvpGirdi.setText("");
                         cvpGirdi.setHint("Cevap");
                         ipucuText.setText("***İpucu***");
@@ -191,7 +191,7 @@ public class ilkBolumOyun extends Activity implements View.OnClickListener, Rewa
             if(suan<ensonlvl){
                 suan++;
                 imageView.setBackgroundResource(sorular[suan]);
-                bolumText.setText("#"+(suan+1));
+                bolumText.setText("#1/"+(suan+1));
                 cvpGirdi.setText("");
                 cvpGirdi.setHint("Cevap");;
                 ipucuText.setText("***İpucu***");
@@ -204,7 +204,7 @@ public class ilkBolumOyun extends Activity implements View.OnClickListener, Rewa
             if(suan>0){
                 suan--;
                 imageView.setBackgroundResource(sorular[suan]);
-                bolumText.setText("#"+(suan+1));
+                bolumText.setText("#1/"+(suan+1));
                 cvpGirdi.setText("");
                 cvpGirdi.setHint("Cevap");
                 ipucuText.setText("***İpucu***");

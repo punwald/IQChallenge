@@ -9,6 +9,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 public class Bolumler extends Activity implements View.OnClickListener{
     Button bolum1,bolum2,bolum3;
     Intent a;
@@ -17,6 +21,11 @@ public class Bolumler extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bolumler);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+         /*Reklam*/
+        MobileAds.initialize(this, "ca-app-pub-1592029610374280~2237318862");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         bolum1= (Button) findViewById(R.id.bolum1);
         bolum2= (Button) findViewById(R.id.bolum2);
         bolum3= (Button) findViewById(R.id.bolum3);
