@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.KeyEvent;
@@ -19,15 +18,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import java.util.ArrayList;
 
-public class UcuncuBolumOyun extends Activity implements View.OnClickListener, RewardedVideoAdListener {
+public class Oyun extends Activity implements View.OnClickListener, RewardedVideoAdListener {
     /*Animasyon*/
     Animation gecisAnimation,yanlisCevapAnimation;
 
@@ -47,16 +46,18 @@ public class UcuncuBolumOyun extends Activity implements View.OnClickListener, R
     RewardedVideoAd mAd;
     /*View Erişimler Son*/
 
-    int[] sorular =new int[7];
-    String[] cevap={"3","11","1056","6","6","72","42"};
-    String[] ipucu={"1.cevap","2.cevap","3.cevap","4.cevap","5.cevap","6.cevap"};
-
-    int suan=0,tipHakki=3,ensonlvl=0,kacinciTip=0;
+    ArrayList<Integer> sorular=new ArrayList<>();
+    ArrayList<String> cevap=new ArrayList<>();
+    ArrayList<String> ipucu=new ArrayList<>();
+    String bolum;
+    boolean ipucuAcikmi;
+    int suan=0,tipHakki,ensonlvl=0;
 
     @Override
     protected void onPause() {
         super.onPause();
     }
+
 
     @Override
     protected void onStop() {
@@ -68,13 +69,77 @@ public class UcuncuBolumOyun extends Activity implements View.OnClickListener, R
         super.onDestroy();
     }
 
+    public void sifreSoru(){
+        sorular.add(R.drawable.sifre1);
+        sorular.add(R.drawable.sifre2);
+        sorular.add(R.drawable.sifre3);
+        sorular.add(R.drawable.sifre4);
+        sorular.add(R.drawable.sifre5);
+        sorular.add(R.drawable.sifre6);
+        sorular.add(R.drawable.sifre7);
+        cevap.add("265");
+        cevap.add("636");
+        cevap.add("111");
+        cevap.add("1905");
+        cevap.add("11935");
+        cevap.add("3698");
+        cevap.add("1194");
+
+    }
+    public void tabloSoru(){
+        sorular.add(R.drawable.tablosoru1);
+        sorular.add(R.drawable.tablosoru2);
+        sorular.add(R.drawable.tablosoru3);
+        sorular.add(R.drawable.tablosoru4);
+        sorular.add(R.drawable.tablosoru5);
+        sorular.add(R.drawable.tablosoru6);
+        sorular.add(R.drawable.tablosoru7);
+        cevap.add("9");
+        cevap.add("8");
+        cevap.add("7");
+        cevap.add("12");
+        cevap.add("3");
+        cevap.add("5");
+        cevap.add("6");
+        ipucu.add("İki tarafı topla");
+        ipucu.add("Satırların toplamı");
+        ipucu.add("Spiral");
+        ipucu.add("Köşegen toplamları");
+        ipucu.add("Toplamlar üç katına eşit");
+        ipucu.add("Sudoku");
+        ipucu.add("Bunu bizde çözemedik :D");
+    }
+    public void sekilSoru(){
+        sorular.add(R.drawable.sekil1);
+        sorular.add(R.drawable.sekil2);
+        sorular.add(R.drawable.sekil3);
+        sorular.add(R.drawable.sekil4);
+        sorular.add(R.drawable.sekil4);
+        sorular.add(R.drawable.sekil5);
+        sorular.add(R.drawable.sekil7);
+        cevap.add("3");
+        cevap.add("11");
+        cevap.add("1056");
+        cevap.add("6");
+        cevap.add("6");
+        cevap.add("72");
+        cevap.add("42");
+        ipucu.add("Ters işlem");
+        ipucu.add("Pascal Üçgeni");
+        ipucu.add("Kenar Sayısı");
+        ipucu.add("Köşe Sayısı");
+        ipucu.add("Her şekil için bir işlem");
+        ipucu.add("Topla çarp");
+        ipucu.add("Rakamlara ayır");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ucuncu_bolum_oyun);
+        setContentView(R.layout.activity_oyun);
         Intent i=getIntent();
+        bolum= (String) i.getExtras().get("bolum");
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        relativeLayout= (RelativeLayout) findViewById(R.id.layout);
         /*Reklam*/
         MobileAds.initialize(this, "ca-app-pub-1592029610374280~2237318862");
         AdView mAdView = (AdView) findViewById(R.id.adView);
@@ -85,11 +150,56 @@ public class UcuncuBolumOyun extends Activity implements View.OnClickListener, R
         mAd.setRewardedVideoAdListener(this);
         loadRewardedVideoAd();
 
-        /*Animasyon*/
+        initialize();
+
+        blow=Typeface.createFromAsset(getAssets(),"fonts/blowbrush.otf");
+        bolumText.setTypeface(blow);
+
+        /*SharedPreferences*/
+
+        shared=getPreferences(Context.MODE_PRIVATE);
+        editor=shared.edit();
+
+        tipHakki=shared.getInt("ipucuHakki",3);
+
+        /*SharedPreferences Son*/
+
+        /*Sorular*/
+        if(bolum.equals("sifre")){
+            sifreSoru();
+            suan=shared.getInt("sifreSuan",0);
+            ensonlvl=shared.getInt("ensonlvlSifre",0);
+            ipucuAcikmi=shared.getBoolean("ipucuSifre",false);
+        }else if(bolum.equals("tablo")){
+            tabloSoru();
+            suan=shared.getInt("tabloSuan",0);
+            ensonlvl=shared.getInt("ensonlvlTablo",0);
+            ipucuAcikmi=shared.getBoolean("ipucuTablo",false);
+        }else if(bolum.equals("sekil")){
+            sekilSoru();
+            suan=shared.getInt("sekilSuan",0);
+            ensonlvl=shared.getInt("ensonlvlSekil",0);
+            ipucuAcikmi=shared.getBoolean("ipucuSekil",false);
+        }
+        /*Sorular Son*/
+
+        if (ensonlvl>0){
+            suan=ensonlvl;
+        }
+
+        imageView.setBackgroundResource(sorular.get(suan));
+        bolumText.setText("#"+(suan+1)+"/7");
+        tipB.setText(tipHakki+" ");
+        kontrol();
+
+
+    }
+
+    private void initialize() {
+
         gecisAnimation = AnimationUtils.loadAnimation(this,R.anim.sorugecisanim);
         yanlisCevapAnimation=AnimationUtils.loadAnimation(this,R.anim.yanliscevapanim);
-
-
+        relativeLayout= (RelativeLayout) findViewById(R.id.layout);
         imageView= (ImageView) findViewById(R.id.imageview);
         cevapB= (Button) findViewById(R.id.cevapButon);
         tipB= (Button) findViewById(R.id.ipucuButon);
@@ -99,54 +209,20 @@ public class UcuncuBolumOyun extends Activity implements View.OnClickListener, R
         bolumText= (TextView) findViewById(R.id.bolumText);
         ipucuText= (TextView) findViewById(R.id.ipucuText);
         reklam= (Button) findViewById(R.id.reklam);
-
-        blow=Typeface.createFromAsset(getAssets(),"fonts/blowbrush.otf");
-        bolumText.setTypeface(blow);
-        /*Sorular*/
-        sorular[0]=R.drawable.sekil1;
-        sorular[1]=R.drawable.sekil2;
-        sorular[2]=R.drawable.sekil3;
-        sorular[3]=R.drawable.sekil4;
-        sorular[4]=R.drawable.sekil5;
-        sorular[5]=R.drawable.sekil6;
-        sorular[6]=R.drawable.sekil7;
-        /*Sorular Son*/
-
-        /*SharedPreferences*/
-
-        shared=getPreferences(Context.MODE_PRIVATE);
-        editor=shared.edit();
-
-        suan=shared.getInt("suanLvl",0);
-        tipHakki=shared.getInt("ipucuHakki",3);
-        ensonlvl=shared.getInt("ensonlvl",0);
-
-        /*SharedPreferences Son*/
-
         cevapB.setOnClickListener(this);
         tipB.setOnClickListener(this);
         ileriB.setOnClickListener(this);
         geriB.setOnClickListener(this);
         reklam.setOnClickListener(this);
-        if (ensonlvl>0){
-            suan=ensonlvl;
-        }
-
-        imageView.setBackgroundResource(sorular[suan]);
-        bolumText.setText("#3/"+(suan+1));
-        tipB.setText(tipHakki+" ");
-
-
-
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId()==cevapB.getId()){
-            cevapString=cvpGirdi.getText().toString();
+            cevapString=cvpGirdi.getText().toString().trim();
             if(!cvpGirdi.toString().isEmpty()){
-                if(cevapString.equals(cevap[suan])) {
-                    if (suan<(sorular.length-1)){
+                if(cevapString.equals(cevap.get(suan))) {
+                    if (suan<(sorular.size()-1)){
 
                         suan++;
                         if(!(ensonlvl>=suan)){
@@ -155,21 +231,21 @@ public class UcuncuBolumOyun extends Activity implements View.OnClickListener, R
                         if(suan%5==0){
                             tipHakki++;
                         }
-                        kacinciTip=suan;
+                        //kacinciTip=suan;
                         imageView.startAnimation(gecisAnimation);
-                        imageView.setBackgroundResource(sorular[suan]);
-                        bolumText.setText("#3/" + (suan+1));
+                        imageView.setBackgroundResource(sorular.get(suan));
+                        bolumText.setText("#" + (suan+1)+"/7");
                         cvpGirdi.setText("");
                         cvpGirdi.setHint("Cevap");
                         ipucuText.setText("***İpucu***");
                         tipB.setText(tipHakki+"");
-
+                        ipucuAcikmi=false;
+                        kontrol();
                     }/*Kontrol İf*/else{
                         Toast.makeText(this,"Bölüm Bitti",Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(this,Bolumler.class));
                     }
                 }else {
-
                     relativeLayout.startAnimation(yanlisCevapAnimation);
                     Toast.makeText(this,"Yanlış Cevap",Toast.LENGTH_SHORT).show();
                 }
@@ -177,26 +253,29 @@ public class UcuncuBolumOyun extends Activity implements View.OnClickListener, R
             }
         }//İpucu
         else if(v.getId()==tipB.getId()){
-            if(tipHakki>0){
-                if(kacinciTip==suan) {
-                    kacinciTip++;
+            if (ipucuAcikmi){
+                ipucuText.setText(ipucu.get(suan));
+            }else {
+                if (tipHakki > 0) {
                     tipHakki--;
-                    ipucuText.setText(ipucu[suan]);
+                    ipucuText.setText(ipucu.get(suan));
                     tipB.setText(tipHakki + "");
+                    ipucuAcikmi = true;
+                } else {
+                    Toast.makeText(this, "İpucu Hakkınız Yok", Toast.LENGTH_LONG).show();
                 }
-            }else{
-                Toast.makeText(this,"İpucu Hakkınız Yok",Toast.LENGTH_LONG).show();
             }
         }//İpucu
         else if(v.getId()==ileriB.getId()){
             if(suan<ensonlvl){
                 suan++;
-                imageView.setBackgroundResource(sorular[suan]);
-                bolumText.setText("#3/"+(suan+1));
+                imageView.setBackgroundResource(sorular.get(suan));
+                bolumText.setText("#"+(suan+1)+"/7");
                 cvpGirdi.setText("");
                 cvpGirdi.setHint("Cevap");;
                 ipucuText.setText("***İpucu***");
                 tipB.setText(tipHakki+"");
+                kontrol();
             }else{
                 Toast.makeText(this,"Kilitli",Toast.LENGTH_LONG).show();
             }
@@ -204,12 +283,13 @@ public class UcuncuBolumOyun extends Activity implements View.OnClickListener, R
         else if(v.getId()==geriB.getId()){
             if(suan>0){
                 suan--;
-                imageView.setBackgroundResource(sorular[suan]);
-                bolumText.setText("#3/"+(suan+1));
+                imageView.setBackgroundResource(sorular.get(suan));
+                bolumText.setText("#"+(suan+1)+"/7");
                 cvpGirdi.setText("");
                 cvpGirdi.setHint("Cevap");
                 ipucuText.setText("***İpucu***");
                 tipB.setText(tipHakki+"");
+                kontrol();
             }
         }
         else if(v.getId()==reklam.getId()){
@@ -223,9 +303,21 @@ public class UcuncuBolumOyun extends Activity implements View.OnClickListener, R
             }
         }
         /*SharedPreferences düzenleme*/
-        editor.putInt("suanLvl",suan);
+        if(bolum.equals("sifre")){
+            editor.putInt("sifreSuan",suan);
+            editor.putInt("ensonlvlSifre",ensonlvl);
+            editor.putBoolean("ipucuSifre",ipucuAcikmi);
+        }else if(bolum.equals("tablo")){
+            editor.putInt("tabloSuan",suan);
+            editor.putInt("ensonlvlTablo",ensonlvl);
+            editor.putBoolean("ipucuTablo",ipucuAcikmi);
+        }else if(bolum.equals("sekil")){
+            editor.putInt("sekilSuan",suan);
+            editor.putInt("ensonlvlSekil",ensonlvl);
+            editor.putBoolean("ipucuSekil",ipucuAcikmi);
+        }
+
         editor.putInt("ipucuHakki",tipHakki);
-        editor.putInt("ensonlvl",ensonlvl);
         editor.commit();
         /*SharedPreferences düzenleme son*/
 
@@ -283,6 +375,7 @@ public class UcuncuBolumOyun extends Activity implements View.OnClickListener, R
         }.start();
     }
 
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK ) {
@@ -290,6 +383,17 @@ public class UcuncuBolumOyun extends Activity implements View.OnClickListener, R
             startActivity(new Intent(this,Ayarlar.class));
         }
         return true;
+    }
+
+    public void kontrol(){
+        if(suan==0){
+            geriB.setVisibility(Button.INVISIBLE);
+        }else if(suan==6){
+            ileriB.setVisibility(Button.INVISIBLE);
+        }else{
+            ileriB.setVisibility(Button.VISIBLE);
+            geriB.setVisibility(Button.VISIBLE);
+        }
     }
 }
 

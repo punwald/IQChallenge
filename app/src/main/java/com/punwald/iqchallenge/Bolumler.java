@@ -1,9 +1,7 @@
 package com.punwald.iqchallenge;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -39,13 +37,16 @@ public class Bolumler extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v.getId()==bolum1.getId()){
-            a=new Intent(this,ilkBolumOyun.class);
+            a=new Intent(this,Oyun.class);
+            a.putExtra("bolum","sifre");
             startActivity(a);
         }else if(v.getId()==bolum2.getId()){
-            a=new Intent(this,ikinciBolumOyun.class);
+            a=new Intent(this,Oyun.class);
+            a.putExtra("bolum","tablo");
             startActivity(a);
         }else if(v.getId()==bolum3.getId()){
-            a=new Intent(this,UcuncuBolumOyun.class);
+            a=new Intent(this,Oyun.class);
+            a.putExtra("bolum","sekil");
             startActivity(a);
         }
     }
