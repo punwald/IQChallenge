@@ -89,8 +89,8 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
         sorular.add(R.drawable.sekil2); cevap.add("11"); ipucu.add("Pascal Üçgeni");
         sorular.add(R.drawable.sekil3); cevap.add("1056"); ipucu.add("Kenar Sayısı");
         sorular.add(R.drawable.sekil4); cevap.add("6"); ipucu.add("Köşe Sayısı");
-        sorular.add(R.drawable.sekil4); cevap.add("6"); ipucu.add("Her şekil için bir işlem");
-        sorular.add(R.drawable.sekil5); cevap.add("72"); ipucu.add("Topla çarp");
+        sorular.add(R.drawable.sekil5); cevap.add("6"); ipucu.add("Her şekil için bir işlem");
+        sorular.add(R.drawable.sekil6); cevap.add("72"); ipucu.add("Topla çarp");
         sorular.add(R.drawable.sekil7); cevap.add("42"); ipucu.add("Rakamlara ayır");
     }
 
