@@ -178,7 +178,6 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
                             break;
                     }
                 }
-
                 return false;
             }
         });
@@ -242,7 +241,7 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
                     tipB.setText(tipHakki + "");
                     ipucuAcikmi = true;
                 } else {
-                    Toast.makeText(this, "İpucu Hakkınız Yok", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Reklam izleyerek ipucu kazan", Toast.LENGTH_LONG).show();
                 }
             }
         }//İpucu
@@ -278,7 +277,7 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
                 mAd.show();
                 loadRewardedVideoAd();
             }else{
-                Toast.makeText(this,"Hata Oluştu!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"3 dakikada bir ipucu alabilirsiniz!",Toast.LENGTH_SHORT).show();
                 loadRewardedVideoAd();
             }
         }
@@ -361,7 +360,6 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
         return true;
     }
 
-
     public void kontrol(){
         if(suan==0){
             geriB.setVisibility(Button.INVISIBLE);
@@ -372,9 +370,4 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
             geriB.setVisibility(Button.VISIBLE);
         }
     }
-
-    /*public static void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-    }*/
 }
