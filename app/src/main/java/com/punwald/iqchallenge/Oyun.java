@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -53,9 +54,7 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
     int suan=0, tipHakki, ensonlvl=0;
 
     @Override
-    protected void onPause() {
-        super.onPause();
-    }
+    protected void onPause() { super.onPause(); }
     @Override
     protected void onStop() {
         super.onStop();
@@ -163,6 +162,27 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
         cevapB= (Button) findViewById(R.id.cevapButon);
         tipB= (Button) findViewById(R.id.ipucuButon);
         cvpGirdi= (EditText) findViewById(R.id.cevap);
+
+        cvpGirdi.setOnKeyListener(new View.OnKeyListener(){
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_ENTER:
+                            Cevapla();
+                            //cvpGirdi.setFocusable(false);
+                            //cvpGirdi.setFocusableInTouchMode(true);
+                            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(cvpGirdi.getWindowToken(), 0);
+                            return true;
+                        default:
+                            break;
+                    }
+                }
+
+                return false;
+            }
+        });
+
         ileriB= (Button) findViewById(R.id.ileri);
         geriB= (Button) findViewById(R.id.geri);
         bolumText= (TextView) findViewById(R.id.bolumText);
@@ -174,40 +194,43 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
         geriB.setOnClickListener(this);
         reklam.setOnClickListener(this);
     }
+    public void Cevapla(){
+        cevapString=cvpGirdi.getText().toString().trim();
+        if(!cvpGirdi.toString().isEmpty()){
+            if(cevapString.equals(cevap.get(suan))) {
+                if (suan<(sorular.size()-1)){
+                    suan++;
+                    if(!(ensonlvl>=suan)){
+                        ensonlvl=suan;
+                    }
+                    if(suan%5==0){
+                        tipHakki++;
+                    }
+                    //kacinciTip=suan;
+                    imageView.startAnimation(gecisAnimation);
+                    imageView.setBackgroundResource(sorular.get(suan));
+                    bolumText.setText((suan+1) + "/" + sorular.size());
+                    cvpGirdi.setText("");
+                    cvpGirdi.setHint("Cevap");
+                    ipucuText.setText("***İpucu***");
+                    tipB.setText(tipHakki+"");
+                    ipucuAcikmi=false;
+                    kontrol();
+                }/*Kontrol İf*/else{
+                    Toast.makeText(this,"Bölüm Bitti",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this,Bolumler.class));
+                }
+            }else {
+                relativeLayout.startAnimation(yanlisCevapAnimation);
+                Toast.makeText(this,"Yanlış Cevap",Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
     @Override
     public void onClick(View v) {
         if (v.getId()==cevapB.getId()){
-            cevapString=cvpGirdi.getText().toString().trim();
-            if(!cvpGirdi.toString().isEmpty()){
-                if(cevapString.equals(cevap.get(suan))) {
-                    if (suan<(sorular.size()-1)){
-                        suan++;
-                        if(!(ensonlvl>=suan)){
-                            ensonlvl=suan;
-                        }
-                        if(suan%5==0){
-                            tipHakki++;
-                        }
-                        //kacinciTip=suan;
-                        imageView.startAnimation(gecisAnimation);
-                        imageView.setBackgroundResource(sorular.get(suan));
-                        bolumText.setText((suan+1) + "/" + sorular.size());
-                        cvpGirdi.setText("");
-                        cvpGirdi.setHint("Cevap");
-                        ipucuText.setText("***İpucu***");
-                        tipB.setText(tipHakki+"");
-                        ipucuAcikmi=false;
-                        kontrol();
-                    }/*Kontrol İf*/else{
-                        Toast.makeText(this,"Bölüm Bitti",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(this,Bolumler.class));
-                    }
-                }else {
-                    relativeLayout.startAnimation(yanlisCevapAnimation);
-                    Toast.makeText(this,"Yanlış Cevap",Toast.LENGTH_SHORT).show();
-                }
-            }
+            Cevapla();
         }//İpucu
         else if(v.getId()==tipB.getId()) {
             if (ipucuAcikmi){
@@ -329,12 +352,15 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK ) {
-
+        if (keyCode == KeyEvent.KEYCODE_BACK ){
             startActivity(new Intent(this,Ayarlar.class));
+        }
+        if(keyCode == KeyEvent.KEYCODE_ENTER){
+            Cevapla();
         }
         return true;
     }
+
 
     public void kontrol(){
         if(suan==0){
@@ -346,4 +372,9 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
             geriB.setVisibility(Button.VISIBLE);
         }
     }
+
+    /*public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+    }*/
 }
