@@ -16,14 +16,16 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".Giris">
+        <activity android:name=".Giris"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Anasayfa" />
+        <activity android:name=".Anasayfa"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Oyun"
             android:windowSoftInputMode="stateAlwaysHidden"
@@ -31,7 +33,8 @@
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
-        <activity android:name=".Bolumler" />
+        <activity android:name=".Bolumler"
+            android:screenOrientation="portrait" />
         <activity android:name=".Ayarlar"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"></activity>
     </application>

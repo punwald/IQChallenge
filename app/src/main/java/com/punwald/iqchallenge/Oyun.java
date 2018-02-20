@@ -54,14 +54,19 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
     int suan=0, tipHakki, ensonlvl=0;
 
     @Override
-    protected void onPause() { super.onPause(); }
+    protected void onPause() {
+        super.onPause();
+        sharedDuzenle();
+    }
     @Override
     protected void onStop() {
         super.onStop();
+        sharedDuzenle();
     }
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        sharedDuzenle();
     }
 
     public void sifreSoru() {
@@ -282,6 +287,10 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
             }
         }
 
+        sharedDuzenle();
+
+    }
+    public void sharedDuzenle(){
         /*SharedPreferences düzenleme*/
         if(bolum.equals("sifre")) {
             editor.putInt("sifreSuan",suan);
@@ -300,7 +309,6 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
         editor.putInt("ipucuHakki",tipHakki);
         editor.commit();
         /*SharedPreferences düzenleme son*/
-
     }
     private void loadRewardedVideoAd() {
         mAd.loadAd("ca-app-pub-1592029610374280/3265483599",new AdRequest.Builder().build());

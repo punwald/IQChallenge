@@ -38,7 +38,7 @@ public class Ayarlar extends Activity implements View.OnClickListener{
                 startActivity(new Intent(this,Anasayfa.class));
                 break;
             case R.id.iletisim:
-                String alici[]={"punwald@gmail.com"};
+                String alici[]={"iletisim@punwald.com"};
                 Intent a=new Intent(Intent.ACTION_SEND);
                 a.putExtra(Intent.EXTRA_EMAIL,alici);
                 a.putExtra(Intent.EXTRA_SUBJECT,"IQ Challenge");
