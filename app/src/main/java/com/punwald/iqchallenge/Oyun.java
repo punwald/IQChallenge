@@ -16,7 +16,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
@@ -36,7 +36,7 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
     SharedPreferences.Editor editor;
 
     /*View Erişimler*/
-    RelativeLayout relativeLayout;
+    LinearLayout relativeLayout;
     ImageView imageView;
     Button cevapB,tipB,ileriB,geriB,reklam;
     EditText cvpGirdi;
@@ -89,8 +89,8 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
         sorular.add(R.drawable.sekil2); cevap.add("11"); ipucu.add("Pascal Üçgeni");
         sorular.add(R.drawable.sekil3); cevap.add("1056"); ipucu.add("Kenar Sayısı");
         sorular.add(R.drawable.sekil4); cevap.add("6"); ipucu.add("Köşe Sayısı");
-        sorular.add(R.drawable.sekil4); cevap.add("6"); ipucu.add("Her şekil için bir işlem");
-        sorular.add(R.drawable.sekil5); cevap.add("72"); ipucu.add("Topla çarp");
+        sorular.add(R.drawable.sekil5); cevap.add("6"); ipucu.add("Her şekil için bir işlem");
+        sorular.add(R.drawable.sekil6); cevap.add("72"); ipucu.add("Topla çarp");
         sorular.add(R.drawable.sekil7); cevap.add("42"); ipucu.add("Rakamlara ayır");
     }
 
@@ -157,7 +157,7 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
     private void initialize() {
         gecisAnimation = AnimationUtils.loadAnimation(this,R.anim.sorugecisanim);
         yanlisCevapAnimation=AnimationUtils.loadAnimation(this,R.anim.yanliscevapanim);
-        relativeLayout= (RelativeLayout) findViewById(R.id.layout);
+        relativeLayout= (LinearLayout) findViewById(R.id.layout);
         imageView= (ImageView) findViewById(R.id.imageview);
         cevapB= (Button) findViewById(R.id.cevapButon);
         tipB= (Button) findViewById(R.id.ipucuButon);
@@ -178,7 +178,6 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
                             break;
                     }
                 }
-
                 return false;
             }
         });
@@ -242,7 +241,7 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
                     tipB.setText(tipHakki + "");
                     ipucuAcikmi = true;
                 } else {
-                    Toast.makeText(this, "İpucu Hakkınız Yok", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Reklam izleyerek ipucu kazan", Toast.LENGTH_LONG).show();
                 }
             }
         }//İpucu
@@ -278,7 +277,7 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
                 mAd.show();
                 loadRewardedVideoAd();
             }else{
-                Toast.makeText(this,"Hata Oluştu!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"3 dakikada bir ipucu alabilirsiniz!",Toast.LENGTH_SHORT).show();
                 loadRewardedVideoAd();
             }
         }
@@ -361,7 +360,6 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
         return true;
     }
 
-
     public void kontrol(){
         if(suan==0){
             geriB.setVisibility(Button.INVISIBLE);
@@ -372,9 +370,4 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
             geriB.setVisibility(Button.VISIBLE);
         }
     }
-
-    /*public static void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-    }*/
 }
