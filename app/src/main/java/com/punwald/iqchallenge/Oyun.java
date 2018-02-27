@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -38,7 +37,7 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
     /*View Erişimler*/
     LinearLayout relativeLayout;
     ImageView imageView;
-    Button cevapB,tipB,ileriB,geriB,reklam;
+    Button cevapB,tipB,ileriB,geriB;
     EditText cvpGirdi;
     String cevapString;
     TextView bolumText,ipucuText;
@@ -51,7 +50,7 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
     ArrayList<String> ipucu=new ArrayList<>();
     String bolum;
     boolean ipucuAcikmi;
-    int suan=0, tipHakki, ensonlvl=0;
+    int suan=0,ensonlvl=0;
 
     @Override
     protected void onPause() {
@@ -127,7 +126,6 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
         shared=getPreferences(Context.MODE_PRIVATE);
         editor=shared.edit();
 
-        tipHakki=shared.getInt("ipucuHakki",3);
         /*SharedPreferences Son*/
 
         /*Sorular*/
@@ -155,7 +153,6 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
 
         imageView.setBackgroundResource(sorular.get(suan));
         bolumText.setText((suan+1) + "/" + sorular.size());
-        tipB.setText(tipHakki+" ");
         kontrol();
     }
 
@@ -191,12 +188,10 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
         geriB= (Button) findViewById(R.id.geri);
         bolumText= (TextView) findViewById(R.id.bolumText);
         ipucuText= (TextView) findViewById(R.id.ipucuText);
-        reklam= (Button) findViewById(R.id.reklam);
         cevapB.setOnClickListener(this);
         tipB.setOnClickListener(this);
         ileriB.setOnClickListener(this);
         geriB.setOnClickListener(this);
-        reklam.setOnClickListener(this);
     }
     public void Cevapla(){
         cevapString=cvpGirdi.getText().toString().trim();
@@ -207,9 +202,6 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
                     if(!(ensonlvl>=suan)){
                         ensonlvl=suan;
                     }
-                    if(suan%5==0){
-                        tipHakki++;
-                    }
                     //kacinciTip=suan;
                     imageView.startAnimation(gecisAnimation);
                     imageView.setBackgroundResource(sorular.get(suan));
@@ -217,12 +209,13 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
                     cvpGirdi.setText("");
                     cvpGirdi.setHint("Cevap");
                     ipucuText.setText("***İpucu***");
-                    tipB.setText(tipHakki+"");
                     ipucuAcikmi=false;
                     kontrol();
                 }/*Kontrol İf*/else{
                     Toast.makeText(this,"Bölüm Bitti",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(this,Bolumler.class));
+                    Intent a=new Intent(this,Bolumler.class);
+                    a.putExtra("bolum",bolum);
+                    startActivity(a);
                 }
             }else {
                 relativeLayout.startAnimation(yanlisCevapAnimation);
@@ -240,14 +233,14 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
             if (ipucuAcikmi){
                 ipucuText.setText(ipucu.get(suan));
             }else {
-                if (tipHakki > 0) {
-                    tipHakki--;
-                    ipucuText.setText(ipucu.get(suan));
-                    tipB.setText(tipHakki + "");
-                    ipucuAcikmi = true;
-                } else {
-                    Toast.makeText(this, "Reklam izleyerek ipucu kazan", Toast.LENGTH_LONG).show();
+                if(mAd.isLoaded()) {
+                    mAd.show();
+                    loadRewardedVideoAd();
+                }else{
+                    Toast.makeText(this,"Video Yükleniyor...",Toast.LENGTH_SHORT).show();
+                    loadRewardedVideoAd();
                 }
+
             }
         }//İpucu
         else if(v.getId()==ileriB.getId()) {
@@ -258,7 +251,6 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
                 cvpGirdi.setText("");
                 cvpGirdi.setHint("Cevap");;
                 ipucuText.setText("***İpucu***");
-                tipB.setText(tipHakki+"");
                 kontrol();
             }else{
                 Toast.makeText(this,"Kilitli",Toast.LENGTH_LONG).show();
@@ -272,21 +264,9 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
                 cvpGirdi.setText("");
                 cvpGirdi.setHint("Cevap");
                 ipucuText.setText("***İpucu***");
-                tipB.setText(tipHakki+"");
                 kontrol();
             }
         }
-        else if(v.getId()==reklam.getId()) {
-            if(mAd.isLoaded()) {
-                geriSayim();
-                mAd.show();
-                loadRewardedVideoAd();
-            }else{
-                Toast.makeText(this,"3 dakikada bir ipucu alabilirsiniz!",Toast.LENGTH_SHORT).show();
-                loadRewardedVideoAd();
-            }
-        }
-
         sharedDuzenle();
 
     }
@@ -306,7 +286,6 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
             editor.putBoolean("ipucuSekil",ipucuAcikmi);
         }
 
-        editor.putInt("ipucuHakki",tipHakki);
         editor.commit();
         /*SharedPreferences düzenleme son*/
     }
@@ -327,8 +306,8 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
     @Override
     public void onRewarded(RewardItem reward) {
         Toast.makeText(this,"İpucu Kazandınız!",Toast.LENGTH_SHORT).show();
-        tipHakki++;
-        tipB.setText(tipHakki + "");
+        ipucuText.setText(ipucu.get(suan));
+        ipucuAcikmi = true;
     }
 
     @Override
@@ -342,20 +321,6 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
     public void onRewardedVideoAdOpened() {}
     @Override
     public void onRewardedVideoStarted() {}
-
-    public void geriSayim() {
-        new CountDownTimer(180000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                // Kalan süreyi saniye cinsine çevirip ekran alanına yazıyoruz.
-                reklam.setText(""+(millisUntilFinished/1000));
-            }
-            public void onFinish() {
-                // Süre tamamlandığını bildiriyoruz.
-                reklam.setText("+1");
-                loadRewardedVideoAd();
-            }
-        }.start();
-    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

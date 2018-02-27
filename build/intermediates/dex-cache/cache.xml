@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.8.0.aar\1cae73fb631c4d669df9774f878fa752\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5ad3911825107d8dd4b017fdecebfd23c08048dd">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\7fecb8af5644ed8e75e6860c0df423fa\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a7a0aa678c3bbadb67fb41df9e107f7ee9087902">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\25.4.0\f6a2fc748ae3769633dea050563e1613e93c135e\support-annotations-25.4.0.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f6a2fc748ae3769633dea050563e1613e93c135e">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\transforms-1\files-1.1\play-services-ads-11.8.0.aar\a7de1555b066a1f9f82c3abc05ae6e99\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="aeca0a0ab86831ec59a54723205ce9341ac22d1b">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\ec10a45fe7123078f1c81b853ab30019\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c2deeac83ffa1304264bc755c2ddb84e7a7fa239">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\transforms-1\files-1.1\play-services-gass-11.8.0.aar\7d529415c8d6b136957eed45a20b0d8e\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a7760a45a6c9f425aaa43ef391a8cf28a8bcb4a1">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\a47f626a8765842b74ef0ed28462ba3d\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e04f28ac2dd9bbe48ced6fc87fedf46c2586f5d6">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\13.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\419e9e80041cbb1e472a45375bef2d39\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="05e3d15c623cd98f0eb43c8249fb6151fae0786c">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\12.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\2934b397c56f8e3fa325b38113d7c556\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\AppData\Local\Android\Sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\693390d8544af585754cf2601e81c7a6\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\6e708d2b5a5a5de8b9727c2475c95e6d\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a64026daf4819a589aea776f5deb19b257a104d1">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\14.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\cfecb5c739d09d849901fd5ba66f10f8\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d29e451fd5bcc265989bf80afd4f149d95d72e7d">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\10.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\c16aa14cb281877a7aca1ff58fddab5b\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="4961be1437163ab598620a3c907c0f3432936f51">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.8.0.aar\00d6896d4a25c1cd76d69ed1a7498461\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="24cb9bae5fbe94df0f55d87452a291b69a2f22bf">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MUHAMMEDEFDALINCESU\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\aabf1f907acc8913d678aa5737fed078\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="14"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b77e50b3c31d0fc64148530f7077f79ec114b5b9">
+        <dex dex="C:\Users\MUHAMMEDEFDALINCESU\Desktop\IQChallenge-master\app\build\intermediates\transforms\preDex\release\9.jar" />
+    </item>
+
+</items>
