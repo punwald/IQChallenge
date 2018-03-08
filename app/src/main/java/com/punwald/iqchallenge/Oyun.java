@@ -76,6 +76,9 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
         sorular.add(R.drawable.sifre5); cevap.add("11935"); ipucu.add("11_3_");
         sorular.add(R.drawable.sifre6); cevap.add("3698"); ipucu.add("_6_8");
         sorular.add(R.drawable.sifre7); cevap.add("1194"); ipucu.add("__94");
+        sorular.add(R.drawable.sifre8); cevap.add("346"); ipucu.add("Basit soru sen yaparsın.");
+        sorular.add(R.drawable.sifre9); cevap.add("178"); ipucu.add("1__");
+        sorular.add(R.drawable.sifre10); cevap.add("9876"); ipucu.add("9___");
     }
 
     public void tabloSoru() {
@@ -86,6 +89,11 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
         sorular.add(R.drawable.tablosoru5); cevap.add("3"); ipucu.add("Toplamlar üç katına eşit");
         sorular.add(R.drawable.tablosoru6); cevap.add("5"); ipucu.add("Sudoku");
         sorular.add(R.drawable.tablosoru7); cevap.add("6"); ipucu.add("Bunu bizde çözemedik :D");
+        sorular.add(R.drawable.tablosoru8); cevap.add("73"); ipucu.add("Aşağı doğru düzenli artış");
+        sorular.add(R.drawable.tablosoru9); cevap.add("20"); ipucu.add("Kenarlar toplamı ortadaki sayıya eşit");
+        sorular.add(R.drawable.tablosoru10); cevap.add("8"); ipucu.add("2x2lik tabloların toplamı eşit");
+        sorular.add(R.drawable.tablosoru11); cevap.add("9"); ipucu.add("Dış kare ile iç kare birbirine eşit");
+        sorular.add(R.drawable.tablosoru12); cevap.add("63"); ipucu.add("Sol ve sağ sütunların toplamı ortadaki rakamların birleşimi");
     }
 
     public void sekilSoru() {
@@ -96,6 +104,11 @@ public class Oyun extends Activity implements View.OnClickListener, RewardedVide
         sorular.add(R.drawable.sekil5); cevap.add("6"); ipucu.add("Her şekil için bir işlem");
         sorular.add(R.drawable.sekil6); cevap.add("72"); ipucu.add("Topla çarp");
         sorular.add(R.drawable.sekil7); cevap.add("42"); ipucu.add("Rakamlara ayır");
+        sorular.add(R.drawable.sekil8); cevap.add("20"); ipucu.add("Alt yarım üst yarımın iki katı");
+        sorular.add(R.drawable.sekil9); cevap.add("20"); ipucu.add("İpucu yok");
+        sorular.add(R.drawable.sekil10); cevap.add("24"); ipucu.add("2 ile çarpıp çift sayıları ekle");
+        sorular.add(R.drawable.sekil11); cevap.add("28"); ipucu.add("İki sayıyı çarp birine böl");
+        sorular.add(R.drawable.sekil12); cevap.add("36"); ipucu.add("Sol üsttekinin karesi");
     }
 
     @Override
